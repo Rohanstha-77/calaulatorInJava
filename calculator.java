@@ -58,6 +58,56 @@ public class calculator extends JFrame implements ActionListener {
         functionButtons[8] = percentageButton;
         functionButtons[9] = sqrButton;
         functionButtons[10] = negativeButton;
-        // ggg
+        
+        for (int i = 0; i < functionButtons.length; i++) {
+            functionButtons[i].setBackground(new Color(0,51,89));
+            functionButtons[i].setFont(new Font("Arial", Font.BOLD, 20));
+            functionButtons[i].addActionListener(this);
+            functionButtons[i].setForeground(Color.white);
+            functionButtons[i].setFocusable(false);
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            numberButtons[i] = new JButton(String.valueOf(i));
+            numberButtons[i].setFont(new Font("Arial", Font.BOLD, 20));
+            numberButtons[i].addActionListener(this);
+            numberButtons[i].setFocusable(false);
+            numberButtons[i].setBackground(Color.BLACK);
+            numberButtons[i].setForeground(Color.white);
+        }
+        
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 4, 0, 0));
+        panel.setBounds(10, 85, 280, 360);
+        
+        panel.add(clearButton);
+        panel.add(sqrButton);
+        panel.add(percentageButton);
+        panel.add(divideButton);
+        
+        panel.add(numberButtons[7]);
+        panel.add(numberButtons[8]);
+        panel.add(numberButtons[9]);
+        panel.add(multiplyButton);
+        
+        panel.add(numberButtons[4]);
+        panel.add(numberButtons[5]);
+        panel.add(numberButtons[6]);
+        panel.add(subButton);
+        
+        panel.add(numberButtons[1]);
+        panel.add(numberButtons[2]);
+        panel.add(numberButtons[3]);
+        panel.add(addButton);
+        
+        panel.add(decimalButton);
+        panel.add(numberButtons[0]);
+        panel.add(negativeButton);
+        panel.add(equalButton);
+        
+        add(textField);
+        add(panel);
+        setVisible(true);
+        //bb
     }
 }
