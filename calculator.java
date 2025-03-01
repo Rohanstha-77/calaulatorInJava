@@ -108,6 +108,14 @@ public class calculator extends JFrame implements ActionListener {
         add(textField);
         add(panel);
         setVisible(true);
-        //bb
+        
+    }
+    public static void main(String[] args) {
+        new calculator();
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
