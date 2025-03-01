@@ -108,6 +108,69 @@ public class calculator extends JFrame implements ActionListener {
         add(textField);
         add(panel);
         setVisible(true);
-        //bb
+    }
+    public static void main(String[] args) {
+        new calculator();
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for(int i=0; i < 10; i++){
+            if(e.getSource() == numberButtons[i]){
+                if(isResultDisplayed) {
+                    textField.setText("");
+                    isResultDisplayed = false;
+                }
+                textField.setText(textField.getText().concat(String.valueOf(i)));
+            }
+        }
+        if(e.getSource() == decimalButton){
+            if(isResultDisplayed) {
+                textField.setText(".");
+                isResultDisplayed = false;
+            } else {
+                textField.setText(textField.getText().concat("."));
+            }
+        }
+        if(e.getSource() == addButton || e.getSource() == subButton || e.getSource() == multiplyButton || e.getSource() == divideButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = e.getActionCommand();
+            textField.setText("");
+        }
+        if(e.getSource() == equalButton) {
+            if (!textField.getText().isEmpty()) {
+                num2 = Double.parseDouble(textField.getText());
+                switch (operator) {
+                    case "+": result = num1 + num2; break;
+                    case "-": result = num1 - num2; break;
+                    case "*": result = num1 * num2; break;
+                    case "/": result = (num2 == 0) ? 0 : num1 / num2; break;
+                    case "%": result = num1 / 100; break;
+                    case "√": result = Math.sqrt(num1); break;
+                    default: break;
+                }
+                textField.setText(String.valueOf(result));
+                num1 = result;
+                isResultDisplayed = true;
+            }
+        }
+        if(e.getSource() == negativeButton) {
+            if (!textField.getText().isEmpty()) {
+                double value = Double.parseDouble(textField.getText());
+                textField.setText(String.valueOf(-value));
+            }
+        }
+        if(e.getSource() == clearButton){
+            textField.setText("");
+            num1 = 0;
+            num2 = 0;
+            operator = null;
+            isResultDisplayed = false;
+        }
+        if(e.getSource() == deleteButton){
+            String text = textField.getText();
+            if(!text.isEmpty()) {
+                textField.setText(text.substring(0, text.length() - 1));
+            }
+        }
     }
 }
